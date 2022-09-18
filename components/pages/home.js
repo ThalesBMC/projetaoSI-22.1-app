@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  AvatarBadge,
-  AvatarGroup,
-  Wrap,
-  WrapItem,
-  Avatar,
-  Flex,
-  Button,
-  Divider,
-} from "@chakra-ui/react";
+import { Avatar, Flex, Button } from "@chakra-ui/react";
 import Link from "next/link";
 import { Footer } from "../components/Footer";
 

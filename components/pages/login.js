@@ -1,16 +1,10 @@
 import React from "react";
 import {
-  AvatarBadge,
-  AvatarGroup,
-  Wrap,
-  WrapItem,
   Avatar,
   Flex,
   Button,
-  Divider,
   FormControl,
   Input,
-  FormLabel,
   Text,
 } from "@chakra-ui/react";
 import { Footer } from "../components/Footer";
