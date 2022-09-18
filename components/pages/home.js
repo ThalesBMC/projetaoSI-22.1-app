@@ -10,6 +10,7 @@ import {
   Divider,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import { Footer } from "../components/Footer";
 
 export default function home() {
   return (
@@ -58,14 +59,7 @@ export default function home() {
           </Button>
         </Link>
       </Flex>
-      <Divider
-        zIndex="99"
-        bgColor="#A259FF"
-        opacity="1"
-        position="absolute"
-        bottom="0"
-        h="10px"
-      />
+      <Footer />
     </Flex>
   );
 }

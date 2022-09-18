@@ -1,41 +1,20 @@
 import React from "react";
 import {
-  AvatarBadge,
-  AvatarGroup,
-  Wrap,
-  WrapItem,
-  Avatar,
   Flex,
   Button,
-  Divider,
   FormControl,
   Input,
   FormLabel,
-  Text,
   Checkbox,
-  Heading,
 } from "@chakra-ui/react";
-import { CloseIcon } from "@chakra-ui/icons";
+
+import { Footer } from "../components/Footer";
+import { Header } from "../components/Header";
 
 export default function login() {
   return (
     <Flex bgColor="#e9e9e9" flexDirection="column" h="100vh">
-      <Flex
-        bgColor="#0ACF83"
-        w="full"
-        h="20"
-        justifyContent="space-between"
-        alignItems="center"
-        paddingLeft="4"
-        paddingRight="4"
-        borderBottomRightRadius="3rem"
-      >
-        <CloseIcon w="6" h="6" />
-        <Heading fontSize="2xl" mr="8">
-          Nome do site
-        </Heading>
-      </Flex>
-
+      <Header />
       <Flex
         flexDirection="column"
         alignItems="center"
@@ -100,9 +79,7 @@ export default function login() {
           </Button>
         </Flex>
       </Flex>
-      <Flex as="footer" mt="8">
-        <Divider zIndex="99" bgColor="#A259FF" opacity="1" h="10px" />
-      </Flex>
+      <Footer />
     </Flex>
   );
 }
