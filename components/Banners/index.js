@@ -22,7 +22,7 @@ export const Banners = () => {
       w='356px'
       h='118px'
       bg='#E9E9E9'
-      borderRadius='0px 0px 7px 0px'
+      borderRadius='7px 7px 7px 0px'
       alignItems='end'
       justifyContent='end'
       padding='5px'
