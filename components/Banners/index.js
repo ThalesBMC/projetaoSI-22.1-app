@@ -1,5 +1,6 @@
 import React from "react";
-import { Flex,
+import { 
+  Flex,
   Box,
   Button,
   Avatar } from "@chakra-ui/react";
