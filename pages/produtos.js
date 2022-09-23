@@ -29,11 +29,11 @@ export default function login() {
         bg='white'
         flexDirection = 'column'
         flexWrap='wrap'
-        
         alignContent='center'
         justifyContent = 'center'
         alignItems = 'center'
         justifyItems='center'
+        mt='60px' //margem superior para a página começar abaixo do header.
         >
         
         <Banners/>

@@ -7,6 +7,14 @@ import {
   Image } from "@chakra-ui/react";
 
 export const Banners = () => {
+
+  //as constantes e variaveis abaixo, devem ser transformadas em useState. Até o momento eu não soube importar esse hook aqui.
+
+  const productFoto = 'https://static.significados.com.br/foto/verduras-e-legumes-fb.jpg'
+  var descri = 'Descrição: Lorem ipsum dolor sit amet, consectetur adipiscing'
+  const productPreco = '00,00'
+  const usuarioImagem = "https://www.cin.ufpe.br/~imprensa/marcacinpng/SC"
+
   return (
     <Flex
       bgColor="white"
@@ -28,12 +36,11 @@ export const Banners = () => {
       alignItems='end'
       justifyContent='end'
       padding='5px'
-      backgroundImage='https://static.significados.com.br/foto/verduras-e-legumes-fb.jpg'
-      backgroundSize='360px'
+      backgroundImage= {productFoto}
+      backgroundSize='cover'
+      backgroundRepeat='no-repeat'
       >
 
-      
-        
         <Flex position='absolut'
         w='82px'
         h='82px'
@@ -46,8 +53,9 @@ export const Banners = () => {
             h="74px"
             name="Segun Adebayo"
             bgColor="white"
-            src="https://www.cin.ufpe.br/~imprensa/marcacinpng/SC"
+            src={usuarioImagem}
             boxShadow="md"
+            
           />
           
         </Flex>
@@ -89,7 +97,9 @@ export const Banners = () => {
             pr ='px'
             fontSize='34px'
             fontWeight='bold'>
-              00,00 
+              
+              {productPreco}
+              
             </Box>
 
           </Flex>
@@ -108,7 +118,9 @@ export const Banners = () => {
       overflow='hidden'
       color='white'
       padding='6px'>
-      Descrição: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mi elit
+
+        {descri}
+
       </Flex> 
 
       </Flex>
