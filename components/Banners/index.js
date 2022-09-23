@@ -3,7 +3,8 @@ import {
   Flex,
   Box,
   Button,
-  Avatar } from "@chakra-ui/react";
+  Avatar,
+  Image } from "@chakra-ui/react";
 
 export const Banners = () => {
   return (
@@ -22,17 +23,21 @@ export const Banners = () => {
       <Flex 
       w='356px'
       h='118px'
-      bg='#E9E9E9'
+      bg='gray.100'
       borderRadius='7px 7px 7px 0px'
       alignItems='end'
       justifyContent='end'
       padding='5px'
+      backgroundImage='https://static.significados.com.br/foto/verduras-e-legumes-fb.jpg'
+      backgroundSize='360px'
       >
+
+      
         
         <Flex position='absolut'
         w='82px'
         h='82px'
-        bg='darkblue'
+        bg='gray.400'
         borderRadius='50%'
         justifyContent='center'
         alignItems='center'>
@@ -91,7 +96,7 @@ export const Banners = () => {
 
           <Flex h='30px' 
           justifyContent='center'>
-            <Button h='auto' bg='#FF7262'> Como Chegar? </Button>
+            <Button h='auto' bg='green.200'> Como Chegar? </Button>
 
           </Flex>
 
