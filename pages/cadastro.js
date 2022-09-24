@@ -10,6 +10,7 @@ import {
 
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
+import { Search } from "../components/Search";
 
 export default function login() {
   return (
@@ -79,6 +80,7 @@ export default function login() {
           </Button>
         </Flex>
       </Flex>
+      <Search />
       <Footer />
     </Flex>
   );
