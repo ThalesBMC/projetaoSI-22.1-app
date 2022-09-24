@@ -42,6 +42,7 @@ export default function login() {
                 justifyContent='center' alignItems='center'
                 backgroundImage="https://www.agroportal.pt/wp-content/uploads/2021/03/compras.jpg" 
                 backgroundSize='cover'
+                backgroundPosition='center'
                 backgroundRepeat='no-repeat'
                 borderRadius='8px'
                 >
