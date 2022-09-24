@@ -16,7 +16,6 @@ const array = ["banana", "batata", "alface", "tomate", "pão"];
 
 export const Search = () => {
   const [isActivated, setIsActivated] = useState(false);
-  const [filteredItens, setFilteredItens] = useState(array);
   const { onToggle, isOpen } = useDisclosure();
 
   const openSearch = () => {
