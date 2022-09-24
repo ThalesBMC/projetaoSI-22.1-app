@@ -32,7 +32,7 @@ export default function inicialmercado() {
         </Flex>
       </Flex>
       <Flex flexDirection="column">
-        <Flex w="full" justify="space-around" mt="40">
+        <Flex w="full" justify="space-around" mt="20">
           <Link href="/">
             <Button
               _active={{ opacity: 0.8 }}
@@ -190,6 +190,11 @@ export default function inicialmercado() {
             </Button>{" "}
           </Link>
         </Flex>
+      </Flex>
+      <Flex position="absolute" right="0" bottom="0" mr="12" mb="6">
+        <Button color="#3F3F3F" fontWeight="extrabold" fontSize="32px">
+          Sair
+        </Button>
       </Flex>
     </Flex>
   );
