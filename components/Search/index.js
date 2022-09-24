@@ -1,43 +1,83 @@
 import {
   Flex,
   Button,
-  Text,
   Icon,
-  Modal,
   useDisclosure,
+  Slide,
+  Box,
+  Input,
+  InputGroup,
+  InputRightElement,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 
+const array = ["banana", "batata", "alface", "tomate", "pão"];
+
 export const Search = () => {
   const [isActivated, setIsActivated] = useState(false);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [filteredItens, setFilteredItens] = useState(array);
+  const { onToggle, isOpen } = useDisclosure();
 
-  const handleSearchButton = () => {
+  const openSearch = () => {
     setIsActivated(true);
-    onOpen();
+    onToggle();
   };
-  console.log(isActivated);
-  const handleDisplay = () => {
-    isActivated === true ? "none" : "flex";
+
+  const closeSearch = () => {
+    setIsActivated(false);
+    onToggle();
+  };
+
+  const handlerFilter = (product) => {
+    if (array.includes(product)) {
+      const newArray = array.filter((item) => item === product);
+      console.log(newArray);
+      return;
+    }
   };
   return (
-    <Flex justify="end" bg="purple.200">
+    <Flex justify="end">
       <Flex
         mr="10"
         borderRadius="full"
         bg="purple.200"
         h="16"
         align={"center"}
-        display={handleDisplay()}
+        display={isActivated === true ? "none" : "flex"}
       >
-        <Button onClick={handleSearchButton}>
+        <Button onClick={openSearch}>
           <Icon as={FaSearch} w="9" h="9" color={"purple.500"} />
         </Button>
       </Flex>
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <Text>asdasd</Text>
-      </Modal>
+      <Flex>
+        <Slide direction="bottom" in={isOpen} style={{ zIndex: 10 }}>
+          <Box
+            p="30px"
+            color="white"
+            mt="4"
+            bg="purple.200"
+            rounded="md"
+            shadow="md"
+          >
+            <InputGroup>
+              <Input
+                bg="white"
+                w="354px"
+                h="65px"
+                color="black"
+                borderRadius={"2xl"}
+                onChange={(event) => handlerFilter(event.target.value)}
+              ></Input>
+              <InputRightElement h="100%" mr="4">
+                <Button onClick={closeSearch}>
+                  <Icon as={FaSearch} w="9" h="9" color={"purple.500"} />
+                </Button>
+              </InputRightElement>
+            </InputGroup>
+          </Box>
+        </Slide>
+      </Flex>
     </Flex>
   );
 };
