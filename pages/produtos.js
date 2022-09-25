@@ -10,7 +10,7 @@ export default function login() {
     <MenuLayout>
       <Flex
         h="auto"
-        bg="white"
+        bg="gray.100"
         flexDirection="column"
         flexWrap="wrap"
         alignContent="center"

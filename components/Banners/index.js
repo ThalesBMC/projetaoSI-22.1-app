@@ -12,7 +12,6 @@ export const Banners = () => {
 
   return (
     <Flex
-      bgColor="white"
       w="368px"
       h="231px"
       borderRadius="7px"

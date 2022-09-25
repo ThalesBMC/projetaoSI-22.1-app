@@ -6,7 +6,7 @@ import { Header } from "../Header/index";
 export const MenuLayout = ({ children }) => {
   return (
     <Flex
-      bg="white"
+      bg="gray.100"
       flexDirection="column"
       h="auto"
       w="100%"
@@ -15,7 +15,7 @@ export const MenuLayout = ({ children }) => {
       justifyItems="center"
     >
       <Header />
-      <Flex mt="60px" w="full" h="full">
+      <Flex mt="60px" w="full" h="full" flexDirection='column'> 
         {children}
       </Flex>
       <Footer />

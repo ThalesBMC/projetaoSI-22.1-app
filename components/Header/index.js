@@ -39,8 +39,8 @@ export const Header = () => {
           fontSize="3xl"
           onClick={() => setShowMenu(!showMenu)}
         />
-        <Heading fontSize="2xl" mr="8">
-          Nome do site
+        <Heading fontSize="2xl" mr="8" color='gray.100'>
+          Offerta.com
         </Heading>
       </Flex>
       {showMenu && (
