@@ -19,7 +19,7 @@ import { Header } from "../components/Header";
 export default function login() {
   return (
 
-    <Flex bgColor="#e9e9e9" flexDirection="column" h="100vh">
+    <Flex bgColor="gray.100" flexDirection="column" h="100vh">
       
       <Grid
         templateAreas={`"header header"
@@ -40,12 +40,14 @@ export default function login() {
             <GridItem pl='2' pr='2' area={'nav'}>
                 <Flex flexDirection='column' h='100%' w='100%' 
                 justifyContent='center' alignItems='center'
+                backgroundImage="https://www.agroportal.pt/wp-content/uploads/2021/03/compras.jpg" 
+                backgroundSize='cover'
+                backgroundPosition='center'
+                backgroundRepeat='no-repeat'
+                borderRadius='8px'
                 >
 
-                    <Box w='550px' h='45%' >
-                        <Image src="https://www.agroportal.pt/wp-content/uploads/2021/03/compras.jpg" 
-                        borderRadius='10px' padding='2px'> </Image>
-                    </Box>
+                    
 
                 </Flex>
             
