@@ -8,8 +8,24 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { Footer } from "../components/Footer";
+import { useForm } from "react-hook-form";
+import { apiClient } from "../utils/api";
+import Router from "next/router";
 
 export default function login() {
+  const { handleSubmit, register } = useForm();
+  const sendLoginForm = async (loginForm) => {
+    try {
+      const res = await apiClient.post("client/login", loginForm);
+      console.log(res.data);
+      if (!res.data) {
+        console.log("usuario não encontrado");
+      } else Router.push("inicialmercado");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <Flex
       flexDirection="column"
@@ -28,49 +44,55 @@ export default function login() {
         src="https://www.cin.ufpe.br/~imprensa/marcacinpng/SC"
         boxShadow="md"
       />
-
-      <FormControl
-        isRequired
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Flex
-          gap="8"
-          flexDirection="column"
-          w="xs"
-          alignItems="center"
+      <form onSubmit={handleSubmit(sendLoginForm)}>
+        <FormControl
+          isRequired
+          display="flex"
           justifyContent="center"
+          alignItems="center"
         >
-          <Input
-            variant="flushed"
-            borderColor="#9FA2B4"
-            color="#9FA2B4"
-            placeholder="Email"
-          />
+          <Flex direction="column" gap="8">
+            <Flex
+              gap="8"
+              flexDirection="column"
+              w="xs"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Input
+                variant="flushed"
+                borderColor="#9FA2B4"
+                color="#9FA2B4"
+                placeholder="Email"
+                {...register("email")}
+              />
 
-          <Input
-            variant="flushed"
-            borderColor="#9FA2B4"
-            color="#9FA2B4"
-            placeholder="Senha"
-          />
-        </Flex>
-      </FormControl>
-      <Flex flexDirection="column" align="center" gap="6">
-        <Button
-          _active={{ bg: "#0ACF83", opacity: 0.8 }}
-          _hover={{ bg: "#0ACF83", opacity: 0.8 }}
-          bgColor="#0ACF83"
-          w="xs"
-          h="10"
-          borderRadius="2xl"
-          boxShadow="md"
-        >
-          Login
-        </Button>
-        <Text color="#0ACF83">Esqueci minha senha</Text>
-      </Flex>
+              <Input
+                variant="flushed"
+                borderColor="#9FA2B4"
+                color="#9FA2B4"
+                placeholder="Senha"
+                {...register("password")}
+              />
+            </Flex>
+            <Flex flexDirection="column" align="center" gap="6">
+              <Button
+                _active={{ bg: "#0ACF83", opacity: 0.8 }}
+                _hover={{ bg: "#0ACF83", opacity: 0.8 }}
+                bgColor="#0ACF83"
+                w="xs"
+                h="10"
+                borderRadius="2xl"
+                boxShadow="md"
+                type="submit"
+              >
+                Login
+              </Button>
+              <Text color="#0ACF83">Esqueci minha senha</Text>
+            </Flex>
+          </Flex>
+        </FormControl>
+      </form>
       <Footer />
     </Flex>
   );
