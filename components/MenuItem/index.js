@@ -13,7 +13,7 @@ export const MenuItem = ({ currentRoute, name, route }) => {
         w="4"
         h="full"
       />
-      <Link ml="2" href="/">
+      <Link ml="2" href={`/${route}`}>
         <Text fontWeight="bold" fontSize="xl">
           {name}
         </Text>

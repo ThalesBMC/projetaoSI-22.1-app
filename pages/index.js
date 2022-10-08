@@ -7,6 +7,7 @@ import {
   WrapItem,
   Avatar,
 } from "@chakra-ui/react";
+import { HomePage } from "./home";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         title="Projetão 2022.1 SI-UFPE"
         description="Página do projetão 2022.1 SI-UFPE"
       />
+      <HomePage />
     </div>
   );
 }

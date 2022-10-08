@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import { MenuItem } from "../MenuItem/index";
 
 const menuItemsOptions = [
-  { name: "Home", route: "" },
+  { name: "Home", route: "/home" },
   { name: "Perfil", route: "perfil" },
   { name: "Lojas Parceiras", route: "produtos" },
   { name: "Filtros", route: "filtros" },
@@ -39,7 +39,7 @@ export const Header = () => {
           fontSize="3xl"
           onClick={() => setShowMenu(!showMenu)}
         />
-        <Heading fontSize="2xl" mr="8" color='gray.100'>
+        <Heading fontSize="2xl" mr="8" color="gray.100">
           Offerta.com
         </Heading>
       </Flex>

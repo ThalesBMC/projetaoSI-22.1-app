@@ -20,7 +20,7 @@ export default function login() {
       console.log(res.data);
       if (!res.data) {
         console.log("usuario não encontrado");
-      } else Router.push("inicialmercado");
+      } else Router.push("produtos");
     } catch (err) {
       console.error(err);
     }

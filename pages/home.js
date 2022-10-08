@@ -3,7 +3,7 @@ import { Avatar, Flex, Button } from "@chakra-ui/react";
 import Link from "next/link";
 import { Footer } from "../components/Footer";
 
-export default function home() {
+export const HomePage = () => {
   return (
     <Flex
       flexDirection="column"
@@ -53,4 +53,4 @@ export default function home() {
       <Footer />
     </Flex>
   );
-}
+};

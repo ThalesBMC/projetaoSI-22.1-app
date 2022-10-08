@@ -13,14 +13,19 @@ import { Header } from "../components/Header";
 import { Search } from "../components/Search";
 import { useForm } from "react-hook-form";
 import { apiClient } from "../utils/api";
+import Router from "next/router";
 
 export default function login() {
   const [isChecked, setIsChecked] = useState(true);
   const { handleSubmit, register } = useForm();
   const sendRegisterForm = async (registerForm) => {
     try {
-      console.log(registerForm);
-      await apiClient.post("client", registerForm);
+      console.log(registerForm, "salve");
+      const data = await apiClient.post("client", registerForm);
+      console.log(data);
+      if (data.status) {
+        Router.push("/login");
+      }
     } catch (err) {
       console.error(err);
     }
@@ -35,7 +40,7 @@ export default function login() {
         gap="12"
         w="full"
         h="100vh"
-        mt="6"
+        mt="20"
       >
         <form onSubmit={handleSubmit(sendRegisterForm)}>
           <Flex
@@ -78,7 +83,6 @@ export default function login() {
               <Input
                 color="#686868"
                 bgColor="white"
-                type="password"
                 placeholder="Bairro"
                 {...register("neighborhood")}
               />

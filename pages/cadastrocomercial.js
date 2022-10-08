@@ -1,12 +1,17 @@
 import { Flex, Button, Text, Input, Icon, FormControl } from "@chakra-ui/react";
 import { FiArrowLeft } from "react-icons/fi";
 import { useForm } from "react-hook-form";
+import Router from "next/router";
 
 export const cadastrocomercial = () => {
   const { handleSubmit, register } = useForm();
 
   const sendComercialForm = (comercialForm) => {
     console.log(comercialForm);
+    Router.push({
+      pathname: "cadastrocomerciante",
+      state: { data: comercialForm },
+    });
   };
   return (
     <Flex bg="white" align={"center"} direction="column" gap="4">
