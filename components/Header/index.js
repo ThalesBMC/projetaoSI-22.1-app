@@ -12,7 +12,7 @@ const menuItemsOptions = [
   { name: "Perfil", route: "perfil" },
   { name: "Lojas Parceiras", route: "produtos" },
   { name: "Filtros", route: "filtros" },
-  { name: "Seja nosso parceiro", route: "cadastroVendedor" },
+  { name: "Seja nosso parceiro", route: "loginVendedor" },
   { name: "Alertas", route: "alertas" },
 ];
 

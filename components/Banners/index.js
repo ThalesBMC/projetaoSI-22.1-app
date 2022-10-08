@@ -1,7 +1,7 @@
 import React from "react";
 import { Flex, Box, Button, Avatar, Image } from "@chakra-ui/react";
 
-export const Banners = () => {
+export const Banners = (item) => {
   //as constantes e variaveis abaixo, devem ser transformadas em useState. Até o momento eu não soube importar esse hook aqui.
 
   const productFoto =
@@ -46,7 +46,7 @@ export const Banners = () => {
             h="74px"
             name="Segun Adebayo"
             bgColor="white"
-            src={usuarioImagem}
+            src={item.item.imageUrl}
             boxShadow="md"
           />
         </Flex>
@@ -88,7 +88,7 @@ export const Banners = () => {
         </Flex>
 
         <Flex w="auto" h="auto" overflow="hidden" color="white" padding="6px">
-          {descri}
+          {item.item.description}
         </Flex>
       </Flex>
     </Flex>

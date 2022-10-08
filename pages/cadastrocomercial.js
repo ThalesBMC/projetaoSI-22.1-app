@@ -2,16 +2,53 @@ import { Flex, Button, Text, Input, Icon, FormControl } from "@chakra-ui/react";
 import { FiArrowLeft } from "react-icons/fi";
 import { useForm } from "react-hook-form";
 import Router from "next/router";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { apiClient } from "../utils/api";
 
-export const cadastrocomercial = () => {
+export const cadastrocomercial = (props) => {
+  const router = useRouter();
+  const [comercianteInfo, setComercianteInfo] = useState(undefined);
   const { handleSubmit, register } = useForm();
-
-  const sendComercialForm = (comercialForm) => {
-    console.log(comercialForm);
-    Router.push({
-      pathname: "cadastrocomerciante",
-      state: { data: comercialForm },
-    });
+  useEffect(() => {
+    if (router.query) {
+      setComercianteInfo(router.query);
+    }
+  }, [router]);
+  const sendComercialForm = async (comercialForm) => {
+    console.log(comercianteInfo, "salveeee");
+    const form = {
+      username: comercialForm.NomeMercado,
+      password: comercianteInfo.password.toString(),
+      name: comercialForm.NomeMercado,
+      ownerName: comercianteInfo.Nome,
+      email: comercianteInfo.Email,
+      neighborhood: comercialForm.Bairro,
+      adNumber: comercialForm.Numero,
+      location: comercialForm.Cidade + ", " + comercialForm.Estado,
+      cep: comercialForm.CEP.toString(),
+    };
+    console.log(form, "why");
+    // const formProduct = {
+    //   name: "'asdasd'",
+    //   description: "description",
+    //   imageUrl: "Url",
+    //   categoryIds: 123,
+    // };
+    // const form = {
+    //   username: "'asdasd'",
+    //   password: " '12345'",
+    //   name: "'asdasd'",
+    //   ownerName: "'hehexd'",
+    //   email: "'iejiej@suahduas.com'",
+    //   neighborhood: "'bairro'",
+    //   adNumber: 123,
+    //   location: "'here'",
+    //   cep: "'35160250' ",
+    // };
+    const res = await apiClient.post("market", form);
+    console.log(res);
+    Router.push("loginvendedor");
   };
   return (
     <Flex bg="white" align={"center"} direction="column" gap="4">
@@ -37,7 +74,7 @@ export const cadastrocomercial = () => {
         pb="4"
       >
         <form onSubmit={handleSubmit(sendComercialForm)}>
-          <FormControl>
+          <FormControl isRequired>
             <Flex direction="column" w="400px">
               <Text fontSize={"12px"} fontWeight="bold" color="#686868">
                 Razão Social
@@ -57,7 +94,7 @@ export const cadastrocomercial = () => {
                 bg="white"
                 borderColor="gray"
                 color="gray"
-                {...register("Nome do Mercado")}
+                {...register("NomeMercado")}
               />
             </Flex>
             <Flex direction="column" w="400px">
@@ -93,6 +130,17 @@ export const cadastrocomercial = () => {
                 borderColor="gray"
                 color="gray"
                 {...register("Telefone do Mercado")}
+              />
+            </Flex>
+            <Flex direction="column" w="400px">
+              <Text fontSize={"12px"} fontWeight="bold" color="#686868">
+                Número do endereço
+              </Text>
+              <Input
+                bg="white"
+                borderColor="gray"
+                color="gray"
+                {...register("Numero")}
               />
             </Flex>
             <Flex direction="column" w="400px">

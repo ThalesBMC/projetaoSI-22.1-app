@@ -20,7 +20,7 @@ export default function login() {
       console.log(res.data);
       if (!res.data) {
         console.log("usuario não encontrado");
-      } else Router.push("produtos");
+      } else Router.push("inicialmercado");
     } catch (err) {
       console.error(err);
     }
@@ -71,6 +71,7 @@ export default function login() {
                 variant="flushed"
                 borderColor="#9FA2B4"
                 color="#9FA2B4"
+                type="password"
                 placeholder="Senha"
                 {...register("password")}
               />
