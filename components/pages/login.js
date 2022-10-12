@@ -1,18 +1,13 @@
 import React from "react";
 import {
-  AvatarBadge,
-  AvatarGroup,
-  Wrap,
-  WrapItem,
   Avatar,
   Flex,
   Button,
-  Divider,
   FormControl,
   Input,
-  FormLabel,
   Text,
 } from "@chakra-ui/react";
+import { Footer } from "../components/Footer";
 
 export default function login() {
   return (
@@ -76,14 +71,7 @@ export default function login() {
         </Button>
         <Text color="#0ACF83">Esqueci minha senha</Text>
       </Flex>
-      <Divider
-        zIndex="99"
-        bgColor="#A259FF"
-        opacity="1"
-        position="absolute"
-        bottom="0"
-        h="10px"
-      />
+      <Footer />
     </Flex>
   );
 }
