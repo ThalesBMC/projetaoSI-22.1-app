@@ -8,9 +8,9 @@ import { useRouter } from "next/router";
 import { MenuItem } from "../MenuItem/index";
 
 const menuItemsOptions = [
-  { name: "Home", route: "/home" },
+  { name: "Home", route: "produtos" },
   { name: "Perfil", route: "perfil" },
-  { name: "Lojas Parceiras", route: "produtos" },
+  { name: "Lojas Parceiras", route: "lojasParceiras" },
   { name: "Filtros", route: "filtros" },
   { name: "Seja nosso parceiro", route: "loginVendedor" },
   { name: "Alertas", route: "alertas" },

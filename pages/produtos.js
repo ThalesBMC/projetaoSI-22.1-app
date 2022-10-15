@@ -12,7 +12,7 @@ export default function login() {
   const [filteredProducts, setFilteredProducts] = useState([]);
   useEffect(() => {
     const getProducts = async () => {
-      const { data } = await apiClient.get("product");
+      const { data } = await apiClient.get("market-product");
       setProdutos(data);
       setFilteredProducts(data);
     };

@@ -19,6 +19,7 @@ export const Banners = (item) => {
       alignItems="center"
       gap="8px"
       margin="3px"
+      mt="4"
     >
       <Flex
         w="356px"
@@ -55,7 +56,7 @@ export const Banners = (item) => {
       <Flex
         bg="#0ACF83"
         w="356px"
-        h="88px"
+        h="120px"
         borderRadius="7px"
         flexDirection="row"
       >
@@ -79,16 +80,24 @@ export const Banners = (item) => {
             </Box>
           </Flex>
 
-          <Flex h="30px" justifyContent="center">
-            <Button h="auto" bg="green.200">
-              {" "}
-              Como Chegar?{" "}
-            </Button>
+          <Flex h="30px" ml="2" w="30">
+            Rua
+          </Flex>
+          <Flex ml="2" w="30">
+            Bairro
           </Flex>
         </Flex>
 
-        <Flex w="auto" h="auto" overflow="hidden" color="white" padding="6px">
-          {item.item.description}
+        <Flex
+          w="auto"
+          h="auto"
+          overflow="hidden"
+          color="white"
+          padding="6px"
+          flexDirection="column"
+        >
+          <Flex fontWeight="bold">{item.item.name}</Flex>
+          <Flex>{item.item.description}</Flex>
         </Flex>
       </Flex>
     </Flex>

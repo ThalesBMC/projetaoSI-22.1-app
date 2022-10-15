@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Avatar,
   Flex,
@@ -12,16 +12,18 @@ import { Footer } from "../components/Footer";
 import { useForm } from "react-hook-form";
 import { apiClient } from "../utils/api";
 import Router from "next/router";
+import { LoginContext } from "../contexts/LoginContext";
 
 export default function login() {
   const { handleSubmit, register } = useForm();
   const [error, setError] = useState();
+  const { setUserInfo } = useContext(LoginContext);
 
   const sendLoginForm = async (loginForm) => {
     try {
       console.log(loginForm);
       const res = await apiClient.get("client/login", { params: loginForm });
-      console.log(res.data);
+      setUserInfo(res.data);
       if (!res.data) {
         console.log("usuario não encontrado");
       } else Router.push("produtos");

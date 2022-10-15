@@ -1,5 +1,6 @@
 import React from "react";
 import { Flex, Avatar, Text, Button, Link, Image } from "@chakra-ui/react";
+import Router from "next/router";
 export default function inicialmercado() {
   return (
     <Flex bg="white" flexDirection="column" h="full" minH="100vh" w="full">
@@ -33,7 +34,7 @@ export default function inicialmercado() {
       </Flex>
       <Flex flexDirection="column">
         <Flex w="full" justify="space-around" mt="20">
-          <Link href="/">
+          <Link onClick={() => Router.push("cadastroprodutos")}>
             <Button
               _active={{ opacity: 0.8 }}
               _hover={{ opacity: 0.8 }}
