@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Flex } from "@chakra-ui/react";
 
-import { Footer } from "../components/Footer";
+import { Search } from "../components/Search";
 import { Header } from "../components/Header";
 import { Banners } from "../components/Banners";
 import { MenuLayout } from "../components/layout/MenuLayout";
@@ -9,10 +9,12 @@ import { apiClient } from "../utils/api";
 
 export default function login() {
   const [produtos, setProdutos] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   useEffect(() => {
     const getProducts = async () => {
       const { data } = await apiClient.get("product");
       setProdutos(data);
+      setFilteredProducts(data);
     };
     getProducts();
   }, []);
@@ -28,10 +30,11 @@ export default function login() {
         alignItems="center"
         justifyItems="center"
       >
-        {produtos.map((item, idx) => (
+        {filteredProducts.map((item, idx) => (
           <Banners key={idx} item={item} />
         ))}
       </Flex>
+      <Search produtos={produtos} setFilteredProducts={setFilteredProducts} />
     </MenuLayout>
   );
 }

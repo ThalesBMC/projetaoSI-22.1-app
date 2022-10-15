@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Flex,
   Button,
@@ -11,12 +11,31 @@ import {
   Box,
   GridItem,
   Grid,
+  Link,
 } from "@chakra-ui/react";
-
+import { useForm } from "react-hook-form";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
+import { apiClient } from "../utils/api";
+import Router from "next/router";
 
 export default function login() {
+  const { handleSubmit, register } = useForm();
+  const [error, setError] = useState();
+
+  const sendLoginForm = async (loginForm) => {
+    try {
+      console.log(loginForm);
+      const res = await apiClient.get("market/login", { params: loginForm });
+      console.log(res.data);
+      if (!res.data) {
+        console.log("usuario não encontrado");
+      } else Router.push("inicialmercado");
+    } catch (err) {
+      setError(err);
+      console.error(err);
+    }
+  };
   return (
     <Flex bgColor="gray.100" flexDirection="column" h="100vh">
       <Grid
@@ -27,7 +46,6 @@ export default function login() {
         gridTemplateColumns={"50% 50%"}
         h="80%"
         w="100%"
-        gap="1"
         fontWeight="bold"
       >
         <GridItem area={"header"} paddingLeft="-4">
@@ -49,7 +67,7 @@ export default function login() {
           ></Flex>
         </GridItem>
 
-        <GridItem pl="2" pr="2" area={"logo"} textAlign="center">
+        <GridItem pl="2" pr="2" area={"logo"} textAlign="center" mb="20">
           <Flex
             flexDirection="column"
             h="100%"
@@ -87,23 +105,39 @@ export default function login() {
                 <Text fontSize="xl">Divulge suas promoções em um só lugar</Text>
               </box>
 
-              <form w="380px">
-                <Flex flexDirection="column" gap="16">
+              <form w="380px" onSubmit={handleSubmit(sendLoginForm)}>
+                <Flex flexDirection="column" gap="16" isInvalid={error}>
                   <FormControl isRequired>
                     <FormLabel color="#686868">E-mail</FormLabel>
                     <Input
                       color="#686868"
                       bgColor="white"
-                      placeholder="nome@email.com.br"
+                      placeholder="Email"
+                      {...register("email")}
                     />
-                    <Text
-                      fontSize="sm"
-                      color="#0ACF83"
-                      textAlign="right"
-                      mt="5px"
+                    <FormLabel mt="25px" color="#686868">
+                      Senha
+                    </FormLabel>
+                    <Input
+                      color="#686868"
+                      bgColor="white"
+                      type="password"
+                      placeholder="Senha"
+                      {...register("password")}
+                    />
+                    <Button
+                      _active={{ bg: "#0ACF83", opacity: 0.8 }}
+                      _hover={{ bg: "#0ACF83", opacity: 0.8 }}
+                      bgColor="#0ACF83"
+                      w="100%"
+                      h="10"
+                      borderRadius="2xl"
+                      boxShadow="md"
+                      type="submit"
+                      mt="8"
                     >
-                      Esqueci meu e-mail
-                    </Text>
+                      Login
+                    </Button>
                   </FormControl>
                 </Flex>
               </form>
@@ -115,9 +149,11 @@ export default function login() {
                   mt="25px"
                 >
                   <Text fontSize="sm">Ainda não tem cadastro?</Text>
-                  <Text fontSize="sm" color="#0ACF83">
-                    Faça o seu cadastro agora!
-                  </Text>
+                  <Link href={`cadastrocomerciante`}>
+                    <Text fontSize="sm" color="#0ACF83">
+                      Faça o seu cadastro agora!
+                    </Text>
+                  </Link>
                 </Flex>
               </box>
             </Flex>

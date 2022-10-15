@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Avatar,
   Flex,
   Button,
   FormControl,
   Input,
+  FormErrorMessage,
   Text,
 } from "@chakra-ui/react";
 import { Footer } from "../components/Footer";
@@ -14,14 +15,18 @@ import Router from "next/router";
 
 export default function login() {
   const { handleSubmit, register } = useForm();
+  const [error, setError] = useState();
+
   const sendLoginForm = async (loginForm) => {
     try {
-      const res = await apiClient.post("client/login", loginForm);
+      console.log(loginForm);
+      const res = await apiClient.get("client/login", { params: loginForm });
       console.log(res.data);
       if (!res.data) {
         console.log("usuario não encontrado");
-      } else Router.push("inicialmercado");
+      } else Router.push("produtos");
     } catch (err) {
+      setError(err);
       console.error(err);
     }
   };
@@ -50,6 +55,7 @@ export default function login() {
           display="flex"
           justifyContent="center"
           alignItems="center"
+          isInvalid={error}
         >
           <Flex direction="column" gap="8">
             <Flex
@@ -75,7 +81,9 @@ export default function login() {
                 placeholder="Senha"
                 {...register("password")}
               />
+              <FormErrorMessage>Sua senha está incorreta</FormErrorMessage>
             </Flex>
+
             <Flex flexDirection="column" align="center" gap="6">
               <Button
                 _active={{ bg: "#0ACF83", opacity: 0.8 }}

@@ -14,7 +14,7 @@ import { FaSearch } from "react-icons/fa";
 
 const array = ["banana", "batata", "alface", "tomate", "pão"];
 
-export const Search = () => {
+export const Search = ({ produtos, setFilteredProducts }) => {
   const [isActivated, setIsActivated] = useState(false);
   const { onToggle, isOpen } = useDisclosure();
 
@@ -29,11 +29,12 @@ export const Search = () => {
   };
 
   const handlerFilter = (product) => {
-    if (array.includes(product)) {
-      const newArray = array.filter((item) => item === product);
-      console.log(newArray);
-      return;
-    }
+    let filteredProducts = produtos.filter((produto) => {
+      if (produto.name.includes(product)) {
+        return produto;
+      }
+    });
+    setFilteredProducts(filteredProducts);
   };
   return (
     <Flex justify="end">
