@@ -9,6 +9,7 @@ import { apiClient } from "../utils/api";
 export default function login() {
   const [markets, setMarkets] = useState([]);
   const [filteredMarkets, setFilteredMarkets] = useState([]);
+  const [search, setSearch] = useState("");
   useEffect(() => {
     const getProducts = async () => {
       const { data } = await apiClient.get("market");
@@ -17,6 +18,13 @@ export default function login() {
     };
     getProducts();
   }, []);
+  useEffect(() => {
+    setFilteredMarkets(
+      markets.filter((market) =>
+        market.neighborhood.toLowerCase().includes(search.toLowerCase())
+      )
+    );
+  }, [search]);
   return (
     <MenuLayout>
       <Flex
@@ -28,16 +36,15 @@ export default function login() {
         justifyContent="center"
         alignItems="center"
         justifyItems="center"
-        gap="15px"
       >
         <Flex
           flexDirection="column"
           w="441px"
           flexWrap="wrap"
-          alignContent="center"
-          justifyContent="center"
-          alignItems="center"
-          justifyItems="center"
+          alignContent="flex-start"
+          justifyContent="flex-start"
+          alignItems="flex-start"
+          justifyItems="flex-start"
         >
           <FormControl
             isRequired
@@ -58,11 +65,12 @@ export default function login() {
               fontSize="2xl"
               color="#0ACF83"
               mt="15px"
+              ml="2"
             >
               Filtrar por Bairro:
             </Box>
 
-            <Flex w="100%">
+            <Flex w="100%" ml="2">
               <Input
                 color="#686868"
                 bgColor="#FFFFFF"
@@ -71,6 +79,7 @@ export default function login() {
                 height="48px"
                 borderRadius="6px 0px 0px 6px"
                 padding="10px"
+                onChange={(e) => setSearch(e.target.value)}
               />
 
               <Button
@@ -86,8 +95,8 @@ export default function login() {
 
           <Box h="30px"></Box>
 
-          <Flex flexDirection="column" margin="20px" gap="20px">
-            {markets.map((market) => (
+          <Flex flexDirection="column" ml="2" gap="20px" mt="12">
+            {filteredMarkets.map((market) => (
               <Estabelecimentos data={market} />
             ))}
           </Flex>

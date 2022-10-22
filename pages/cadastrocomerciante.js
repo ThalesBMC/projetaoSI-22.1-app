@@ -31,7 +31,7 @@ export default function register() {
         h="100vh"
         justifyContent="center"
       >
-        <Link href="/cadastrovendedor">
+        <Link href="/">
           <Button
             _active={{ bg: "#0ACF83", opacity: 0.8 }}
             _hover={{ bg: "#0ACF83", opacity: 0.8 }}

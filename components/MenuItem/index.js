@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Flex, Heading, Text } from "@chakra-ui/react";
 
 import { HamburgerIcon } from "@chakra-ui/icons";
-import { Link } from "@chakra-ui/react";
+import Link from "next/link";
+
 import { useRouter } from "next/router";
 
 export const MenuItem = ({ currentRoute, name, route }) => {
@@ -13,8 +14,8 @@ export const MenuItem = ({ currentRoute, name, route }) => {
         w="4"
         h="full"
       />
-      <Link ml="2" href={`/${route}`}>
-        <Text fontWeight="bold" fontSize="xl">
+      <Link ml="2" href={`/${route}`} cursor="pointer">
+        <Text ml="2" fontWeight="bold" fontSize="xl" cursor="pointer">
           {name}
         </Text>
       </Link>

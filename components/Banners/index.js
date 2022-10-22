@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Box, Button, Avatar, Image } from "@chakra-ui/react";
+import { Flex, Box, Button, Avatar, Text, Image } from "@chakra-ui/react";
 
 export const Banners = (item) => {
   //as constantes e variaveis abaixo, devem ser transformadas em useState. Até o momento eu não soube importar esse hook aqui.
@@ -29,9 +29,12 @@ export const Banners = (item) => {
         alignItems="end"
         justifyContent="end"
         padding="5px"
-        backgroundImage={productFoto}
-        backgroundSize="cover"
+        backgroundImage={item.item.product.imageUrl}
+        backgroundSize="contain"
         backgroundRepeat="no-repeat"
+        border="2px"
+        borderColor="white"
+        bgColor="white"
       >
         <Flex
           position="absolut"
@@ -45,10 +48,12 @@ export const Banners = (item) => {
           <Avatar
             w="74px"
             h="74px"
-            name="Segun Adebayo"
+            src={"https://www.cin.ufpe.br/~imprensa/marcacinpng/SC"}
             bgColor="white"
-            src={item.item.imageUrl}
             boxShadow="md"
+            alignItems="center"
+            justifyContent="center"
+            flexDirection="column"
           />
         </Flex>
       </Flex>
@@ -60,7 +65,7 @@ export const Banners = (item) => {
         borderRadius="7px"
         flexDirection="row"
       >
-        <Flex flexDirection="column" gap="15px">
+        <Flex flexDirection="column" gap="10px">
           <Flex
             overflow="hidden"
             position="static"
@@ -76,15 +81,20 @@ export const Banners = (item) => {
             </Box>
 
             <Box w="136px" h="auto" pr="px" fontSize="34px" fontWeight="bold">
-              {productPreco}
+              {item.item.price}
             </Box>
           </Flex>
+          <Flex flexDirection="column" color="white">
+            <Flex ml="2" w="30">
+              {item.item.market.neighborhood},
+            </Flex>
+            <Flex ml="2" w="30">
+              {item.item.market.location}
+            </Flex>
 
-          <Flex h="30px" ml="2" w="30">
-            Rua
-          </Flex>
-          <Flex ml="2" w="30">
-            Bairro
+            <Flex ml="2" w="30">
+              Cep: {item.item.market.cep}
+            </Flex>
           </Flex>
         </Flex>
 
@@ -96,8 +106,8 @@ export const Banners = (item) => {
           padding="6px"
           flexDirection="column"
         >
-          <Flex fontWeight="bold">{item.item.name}</Flex>
-          <Flex>{item.item.description}</Flex>
+          <Flex fontWeight="bold">{item.item.product.name}</Flex>
+          <Flex>{item.item.product.description}</Flex>
         </Flex>
       </Flex>
     </Flex>

@@ -23,6 +23,7 @@ export default function login() {
     try {
       console.log(loginForm);
       const res = await apiClient.get("client/login", { params: loginForm });
+      console.log(res.data, "pqqq");
       setUserInfo(res.data);
       if (!res.data) {
         console.log("usuario não encontrado");

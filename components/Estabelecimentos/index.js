@@ -14,14 +14,14 @@ export const Estabelecimentos = ({ data }) => {
   const nomeRua = "Nome da Rua";
   const numero = "Número";
   const cep = "00.000-000";
-  console.log(data);
+
   return (
     <Flex
-      w="442px"
+      w="full"
       h="auto"
       flexDirection="row"
       alignItems="center"
-      margin="3px"
+      justifyContent="center"
     >
       <Flex
         Flex
@@ -32,7 +32,7 @@ export const Estabelecimentos = ({ data }) => {
         alignItems="center"
       >
         <Flex
-          w="360px" //iniciei como no figma em 288px, mas achei a área util muito pequena, resolvi aumentar um pouco
+          w="260px" //iniciei como no figma em 288px, mas achei a área util muito pequena, resolvi aumentar um pouco
           h="81px"
           bg="gray.100"
           borderRadius="15px 0px 0px 0px"
@@ -55,7 +55,7 @@ export const Estabelecimentos = ({ data }) => {
         </Flex>
 
         <Flex
-          w="360px"
+          w="260px"
           h="81px"
           flexDirection="row"
           bgColor={salmaoClaro}

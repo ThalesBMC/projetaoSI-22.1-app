@@ -30,8 +30,9 @@ export const Search = ({ produtos, setFilteredProducts }) => {
 
   const handlerFilter = (product) => {
     let filteredProducts = produtos.filter((produto) => {
-      if (produto.name.includes(product)) {
-        return produto;
+      console.log(produto.product.name, "wow");
+      if (produto.product.name.toLowerCase().includes(product.toLowerCase())) {
+        return produto.product.name;
       }
     });
     setFilteredProducts(filteredProducts);

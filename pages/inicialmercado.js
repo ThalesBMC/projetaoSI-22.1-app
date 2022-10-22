@@ -1,7 +1,9 @@
-import React from "react";
+import { useEffect, useState, useContext } from "react";
 import { Flex, Avatar, Text, Button, Link, Image } from "@chakra-ui/react";
 import Router from "next/router";
+import { LoginContext } from "../contexts/LoginContext";
 export default function inicialmercado() {
+  const { marketInfo } = useContext(LoginContext);
   return (
     <Flex bg="white" flexDirection="column" h="full" minH="100vh" w="full">
       <Flex mt="4" w="full" pl="4" pr="4" flexDirection="column">
@@ -29,7 +31,7 @@ export default function inicialmercado() {
           fontSize="48px"
           align="center"
         >
-          <Text ml="4"> MERCADO PRAZERES</Text>
+          <Text ml="4">{marketInfo && marketInfo.name}</Text>
         </Flex>
       </Flex>
       <Flex flexDirection="column">

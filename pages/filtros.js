@@ -6,9 +6,10 @@ import { LoginContext } from "../contexts/LoginContext";
 import Router from "next/router";
 import { useToast } from "@chakra-ui/react";
 import { Header } from "../components/Header";
-export const alerts = () => {
+export const filtros = () => {
   const [categorias, setCategories] = useState([]);
   const [neighborhood, setNeighborhood] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedNeighborhood, setSelectedNeighborhood] = useState([]);
   const toast = useToast();
   useEffect(() => {
@@ -37,30 +38,20 @@ export const alerts = () => {
 
   const { userInfo } = useContext(LoginContext);
 
-  const [selectedCategories, setSelectedCategories] = useState([]);
-  const sendLoginForm = async () => {
+  const sendFiltered = async () => {
     try {
-      console.log(
-        userInfo.id,
-        userInfo.neighborhood,
-        selectedCategories,
-        "ooo"
-      );
-      const res = await apiClient.post("market-product/price-alert", {
-        category: selectedCategories,
-        clientId: userInfo.id,
-        neighborhood: userInfo.neighborhood,
+      const res = await apiClient.get("market-product/findFiltered", {
+        params: {
+          clientId: 20,
+          neighborhood: selectedNeighborhood,
+          category: selectedCategories,
+        },
       });
-      toast({
-        title: "Alerta de preço criado!",
-        description: "Você receberá o alerta por e-mail ",
-        status: "success",
-        duration: 5000,
-        isClosable: true,
-        position: "top",
-      });
-      console.log(res, "wow");
-      Router.push("produtos");
+
+      console.log(res.data, "ooooo");
+      let test = Object.keys(res.data).map((item) => res.data[item].productId);
+      Router.push({ pathname: "produtos", query: test });
+      console.log(test);
     } catch (err) {
       console.error(err);
     }
@@ -81,26 +72,10 @@ export const alerts = () => {
     <>
       <Header />
       <Flex h="100vh" bg="#EFEFEF" direction="column" px="30px">
-        <Flex
-          mt="20"
-          py="35px"
-          direction="column"
-          align="center"
-          borderBottom="1px solid #A7A7A7"
-          gap="22px"
-        >
-          <Text color="#0ACF83" fontWeight="bold" fontSize="25px">
-            Alerta de Preço
-          </Text>
-          <Text color="#0ACF83" align="center" fontSize="16px">
-            Indique quais promoções você está procurando, que te avisaremos
-            assim que ela aparecer :
-          </Text>
-        </Flex>
-        <Text color="#0ACF83" fontWeight="bold" fontSize="22px">
-          Categorias
+        <Text color="#0ACF83" fontWeight="bold" fontSize="22px" mt="20">
+          Filtros por Categoria
         </Text>
-        <Flex flexWrap="wrap" gap="8px">
+        <Flex flexWrap="wrap" gap="8px" mt="6">
           {categorias.map((item, index) => (
             <Options
               key={index}
@@ -132,7 +107,7 @@ export const alerts = () => {
             h="10"
             borderRadius="2xl"
             boxShadow="md"
-            onClick={sendLoginForm}
+            onClick={sendFiltered}
             mt="4"
           >
             Confirmar
@@ -142,4 +117,4 @@ export const alerts = () => {
     </>
   );
 };
-export default alerts;
+export default filtros;

@@ -2,7 +2,6 @@ import { Button, Text } from "@chakra-ui/react";
 import React from "react";
 
 export const Options = ({ nome, selected, handleSelectCategories }) => {
-  console.log(selected);
   return (
     <Button
       border="1px"

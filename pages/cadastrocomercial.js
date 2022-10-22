@@ -5,6 +5,7 @@ import Router from "next/router";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { apiClient } from "../utils/api";
+import Link from "next/link";
 
 export const cadastrocomercial = (props) => {
   const router = useRouter();
@@ -177,10 +178,12 @@ export const cadastrocomercial = (props) => {
               />
             </Flex>
             <Flex justify={"space-between"} w="100%">
-              <Button color="green">
-                <Icon as={FiArrowLeft} />
-                Voltar para os dados pessoais
-              </Button>
+              <Link href="/cadastrocomerciante">
+                <Button color="green">
+                  <Icon as={FiArrowLeft} />
+                  Voltar para os dados pessoais
+                </Button>
+              </Link>
               <Button bg="green" mr="10" type="submit">
                 Cadastrar
               </Button>
