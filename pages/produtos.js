@@ -50,10 +50,6 @@ export default function login() {
             {filteredProducts.map((item, idx) => (
               <Banners key={idx} item={item} />
             ))}
-            <Search
-              produtos={produtos}
-              setFilteredProducts={setFilteredProducts}
-            />
           </>
         ) : (
           <>
@@ -64,6 +60,9 @@ export default function login() {
           </>
         )}
       </Flex>
+      {!query[0] && (
+        <Search produtos={produtos} setFilteredProducts={setFilteredProducts} />
+      )}
     </MenuLayout>
   );
 }
