@@ -42,22 +42,21 @@ export default function HomePage() {
           <Button
             _active={{ bg: "#0ACF83", opacity: 0.8 }}
             _hover={{ bg: "#0ACF83", opacity: 0.8 }}
+            bgColor="#1A202C"
             w={["190px", "xs"]}
             h="10"
             borderRadius="2xl"
             boxShadow="md"
             type="submit"
           >
-            <Text fontSize="16px" color="white">
-              {" "}
-              Entre como Cliente
-            </Text>
+            <Text fontSize="16px"> Entre como Cliente</Text>
           </Button>
         </Link>
       </Flex>
       <Flex
         w="50%"
         h="100vh"
+        bg="#1A202C"
         flexDirection="column"
         align="center"
         justifyContent="center"
@@ -75,10 +74,7 @@ export default function HomePage() {
             boxShadow="md"
             type="submit"
           >
-            <Text fontSize="16px" color="white">
-              {" "}
-              Entre como Comerciante
-            </Text>
+            <Text fontSize="16px"> Entre como Comerciante</Text>
           </Button>
         </Link>
       </Flex>
