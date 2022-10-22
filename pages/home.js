@@ -17,7 +17,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { apiClient } from "../utils/api";
 
-export const HomePage = () => {
+export default function HomePage() {
   const { handleSubmit, register } = useForm();
 
   const sendComercialForm = (comercialForm) => {
@@ -80,4 +80,4 @@ export const HomePage = () => {
       </Flex>
     </Flex>
   );
-};
+}

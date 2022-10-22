@@ -1,11 +1,10 @@
 import { NextSeo } from "next-seo";
-
-import { HomePage } from "./home";
+import { useEffect } from "react";
+import Router from "next/router";
 
 export default function Home() {
-  return (
-    <div>
-      <HomePage />
-    </div>
-  );
+  useEffect(() => {
+    Router.push("home");
+  }, []);
+  return <></>;
 }
